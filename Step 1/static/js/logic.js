@@ -32,10 +32,63 @@ L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
   accessToken: API_KEY
 }).addTo(myMap);
 
-// Make a call the aretrieves our earthquake geoJSON data and make a promise
+// Make a call that retrieves our earthquake geoJSON data and make a promise
 
 d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson").then(data => {
   console.log(data);
+
+  // Create function to determine the color of the marker based on the magnitude of earthquakes
+  function getColor(mag) {
+    switch (true) {
+    case mag > 90:
+      return "#ea2c2c";
+    case mag > 70:
+      return "#ea822c";
+    case mag > 50:
+      return "#ee9c00";
+    case mag > 30:
+      return "#eecc00";
+    case mag > 10:
+      return "#d4ee00";
+    default:
+      return "#98ee00";
+    }
+  }
+
+
+  // Create function to determine the radious of the eqrthquake marker basdie on it magnitude
+  function getRadius(magnitude) {
+    if (magnitude === 0) {
+      return 1;
+    }
+    return magnitude * 4;
+  }
+   
+  // create functio for the style data for each of the earthquakes shown on the map object
+  function styleInfo(feature) {
+    return {
+      opacity: 1,
+      fillOpacity: 1,
+      fillColor: getColor(feature.geometry.coordinates[2]), 
+      color: "#000000",
+      radius: getRadius(feature.properties.mag), 
+      stroke: true,
+      weight: 0.5
+    };
+  }
+
+
+  
+  //add GeoJSON layer to the map once the file is loaded.
+  L.geoJson(data, {
+    pointToLayer: function (feature, latlng) {
+      return L.circleMarker(latlng);  
+    },
+    //set the style for each circle marker
+    style: styleInfo,
+
+  }).addTo(myMap);
+
 
 
 
