@@ -31,3 +31,14 @@ L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
   id: "mapbox/dark-v10",
   accessToken: API_KEY
 }).addTo(myMap);
+
+// Make a call the aretrieves our earthquake geoJSON data and make a promise
+
+d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson").then(data => {
+  console.log(data);
+
+
+
+
+
+})
