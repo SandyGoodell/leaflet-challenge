@@ -98,11 +98,25 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
     }
   }).addTo(myMap);
 
+  // set up a legend
+  // create a legend control object with - Act-02-04 ln 58
+  const legend = L.control({ position: "bottomleft"
+ });
+  //details for legend control
+  legend.onAdd = function () {
+    var div = L.DomUtil.create('div', 'info legend');
+    div.innerHTML = "<table style= 'background-color: white'><tr><td colspan='2' ><h3>&nbsp;&nbsp;Depth </h3></td></tr>"+
+                  "<tr><td><10</td><td style= 'background-color: #98ee00'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>"+
+                  "<tr><td>10-30</td><td style= 'background-color: #d4ee00'></td></tr>"+
+                  "<tr><td>30-50</td><td style= 'background-color: #eecc00'></td></tr>"+
+                  "<tr><td>50-70</td><td style= 'background-color: #ee9c00'></td></tr>"+
+                  "<tr><td>70-90</td><td style= 'background-color: #ea822c'></td></tr>"+
+                  "<tr><td>>90</td><td style= 'background-color: #ea2c2c'></td></tr>"+
+                  "</table>";
 
+    return div;
+  };
+// add legend to the map object
+legend.addTo(myMap)
 
-
-
-
-
-
-})
+});
