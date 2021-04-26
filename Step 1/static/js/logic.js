@@ -106,12 +106,12 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
   legend.onAdd = function () {
     var div = L.DomUtil.create('div', 'info legend');
     div.innerHTML = "<table style= 'background-color: white'><tr><td colspan='2' ><h3>&nbsp;&nbsp;Depth </h3></td></tr>"+
-                  "<tr><td><10</td><td style= 'background-color: #98ee00'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>"+
-                  "<tr><td>10-30</td><td style= 'background-color: #d4ee00'></td></tr>"+
-                  "<tr><td>30-50</td><td style= 'background-color: #eecc00'></td></tr>"+
-                  "<tr><td>50-70</td><td style= 'background-color: #ee9c00'></td></tr>"+
-                  "<tr><td>70-90</td><td style= 'background-color: #ea822c'></td></tr>"+
-                  "<tr><td>>90</td><td style= 'background-color: #ea2c2c'></td></tr>"+
+                  "<tr><td>-9-10</td><td style= 'background-color: #98ee00'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>"+
+                  "<tr><td>11-30</td><td style= 'background-color: #d4ee00'></td></tr>"+
+                  "<tr><td>31-50</td><td style= 'background-color: #eecc00'></td></tr>"+
+                  "<tr><td>51-70</td><td style= 'background-color: #ee9c00'></td></tr>"+
+                  "<tr><td>71-90</td><td style= 'background-color: #ea822c'></td></tr>"+
+                  "<tr><td>91+</td><td style= 'background-color: #ea2c2c'></td></tr>"+
                   "</table>";
 
     return div;
