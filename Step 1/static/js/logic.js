@@ -56,7 +56,7 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
   }
 
 
-  // Create function to determine the radious of the eqrthquake marker basdie on it magnitude
+  // Create function to determine the radius of the earthquake marker basdie on it magnitude
   function getRadius(magnitude) {
     if (magnitude === 0) {
       return 1;
@@ -77,7 +77,6 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
     };
   }
 
-
   
   //add GeoJSON layer to the map once the file is loaded.
   L.geoJson(data, {
@@ -89,11 +88,17 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
     //create popup for each marker to display the magnitude and location of the earthquake
     onEachFeature: function (feature, layer) {
       layer.bindPopup(
-        "Magnitude"
+        "Magnitude: "
+        + feature.properties.mag
+        + "<br>Depth: "
+        + feature.geometry.coordinates[2]
+        + "<br>Location: " 
+        + feature.properties.place
       );
     }
-
   }).addTo(myMap);
+
+
 
 
 
