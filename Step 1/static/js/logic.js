@@ -28,7 +28,7 @@ L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
   tileSize: 512,
   maxZoom: 18,
   zoomOffset: -1,
-  id: "mapbox/dark-v10",
+  id: "mapbox/light-v10",
   accessToken: API_KEY
 }).addTo(myMap);
 
@@ -64,7 +64,7 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
     return magnitude * 4;
   }
    
-  // create functio for the style data for each of the earthquakes shown on the map object
+  // create function for the style data for each of the earthquakes shown on the map object
   function styleInfo(feature) {
     return {
       opacity: 1,
@@ -86,6 +86,12 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
     },
     //set the style for each circle marker
     style: styleInfo,
+    //create popup for each marker to display the magnitude and location of the earthquake
+    onEachFeature: function (feature, layer) {
+      layer.bindPopup(
+        "Magnitude"
+      );
+    }
 
   }).addTo(myMap);
 
